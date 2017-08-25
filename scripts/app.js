@@ -11,15 +11,14 @@ $.ajax({
 .then(function(earthquake){
 for (i = 0; i < earthquake.features.length; i++){
   let shake = earthquake.features[i].properties.title;
-  console.log(shake);
+  let time = earthquake.features[i].properties.time;
+  let hour = new Date(time*1000);
+  $(".rolling-shake").append(`<p>${shake}</p>`)
+  console.log(time);
 }
 })
 .catch(function(err){
   console.log(err);
 });
-
-function update(){
-  $(".rolling-shake").append(`<p>${shake[i]}</p>`);
-}
 
 });
