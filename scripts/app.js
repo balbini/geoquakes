@@ -12,13 +12,31 @@ $.ajax({
 for (i = 0; i < earthquake.features.length; i++){
   let shake = earthquake.features[i].properties.title;
   let time = earthquake.features[i].properties.time;
-  let hour = new Date(time*1000);
-  $(".rolling-shake").append(`<p>${shake}</p>`)
+  let hour = (new Date() - time)/1000/60/60;
+  hour = Math.ceil(hour);
+  console.log(hour);
+  console.log(time);
+  $(".rolling-shake").append(`<p>${shake} / ${hour} hours ago</p>`)
   console.log(time);
 }
 })
 .catch(function(err){
   console.log(err);
 });
+function initMap() {
+        var myLatLng = {lat: 37.78, lng: -122.44};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    initMap();
 
 });
