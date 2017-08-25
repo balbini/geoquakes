@@ -14,10 +14,7 @@ for (i = 0; i < earthquake.features.length; i++){
   let time = earthquake.features[i].properties.time;
   let hour = (new Date() - time)/1000/60/60;
   hour = Math.ceil(hour);
-  console.log(hour);
-  console.log(time);
   $(".rolling-shake").append(`<p>${shake} / ${hour} hours ago</p>`)
-  console.log(time);
 }
 })
 .catch(function(err){
